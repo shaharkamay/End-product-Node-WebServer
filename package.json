@@ -1,0 +1,23 @@
+{
+  "name": "End-product-Node-WebServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaharkamay/End-product-Node-WebServer.git"
+  },
+  "keywords": [],
+  "author": "Shahar Kamay <shahar.kamay@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaharkamay/End-product-Node-WebServer/issues"
+  },
+  "homepage": "https://github.com/shaharkamay/End-product-Node-WebServer#readme",
+  "dependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
