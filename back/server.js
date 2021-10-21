@@ -7,31 +7,29 @@ const port = '5000';
 
 const server = http.createServer((req, res) => {
     let body = "";
+    res.writeHead(200, 'ok', { 
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Content-Type': 'text/plain',
+    });
 
-    const headers = { 
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Origin": "*", 
-    }
-    res.writeHead(200, 'ok', 'UTF-8', headers);
-    
     if (req.method === "GET" && req.url === "/") {
         res.write(body);
         res.end();
         return;
     }
-
+        
     req.on('data', (data) => {
         const jsonData = JSON.parse(data);
-        if(validName(jsonData.studentName) && validAge(jsonData.studentAge) && validAbility(jsonData.studentAbility)) {
-            body += "Welcome to Cyber4s";
+        if(validName(jsonData.name) && validAge(jsonData.age) && validAbility(jsonData.ability)) {
+            body = "Welcome to Cyber4s";
         } else {
-            body += "We Are Sorry You cant sign In";
+            body = "We Are Sorry You cant sign In";
         }
     })
 
     req.on('end', () => {
-        res.write(body);
-        res.end();
+        res.end(body);
     })
 })
 
@@ -47,7 +45,7 @@ function validName(name) {
     return false;
 }
 function validAge(age) {
-    return (age > validStudent.minAge && age <= validStudent.maxAge);
+    return (age >= validStudent.minAge && age <= validStudent.maxAge);
 }
 function validAbility(ability) {
     for (const validAbility of validStudent.ability) {
